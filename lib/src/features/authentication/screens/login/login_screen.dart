@@ -38,9 +38,19 @@ class LoginScreen extends StatelessWidget {
                           width: 20.0,
                         ),
                         onPressed: () {},
-                        label: const Text(tSignInWithGoogle),
+                        label: Text(tSignInWithGoogle.toUpperCase()),
                       ),
-                    )
+                    ),
+                    TextButton(
+                        onPressed: () {},
+                        child: const Text.rich(TextSpan(children: [
+                          TextSpan(
+                            text: tDontHaveAnAccount,
+                          ),
+                          TextSpan(
+                            text: tSignup,
+                          ),
+                        ])))
                   ],
                 )
               ],

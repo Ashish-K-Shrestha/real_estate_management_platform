@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_management_platform/src/constants/sizes.dart';
 import 'package:real_estate_management_platform/src/constants/text_strings.dart';
+import 'package:real_estate_management_platform/src/features/authentication/core/screens/dashboard/dashboard.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -39,13 +40,28 @@ class LoginForm extends StatelessWidget {
               child: TextButton(
                   onPressed: () {}, child: const Text(tForgetPassword)),
             ),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text(tLogin.toUpperCase()),
-              ),
-            ),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Dashboard()),
+                      );
+                    },
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Text(tLogin.toUpperCase()),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),

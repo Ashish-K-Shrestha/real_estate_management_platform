@@ -1,6 +1,6 @@
 // Email
-const String tEmail = "Email";
-const String tPassword = "Password";
+const String tEmail = "Enter Your Email";
+const String tPassword = "Enetr Your Password";
 const String tForgetPassword = "Forget Password?";
 const String tSignInWithGoogle = "Sign-In with Google";
 
@@ -22,5 +22,18 @@ const String tDontHaveAnAccount = "Don't have an Account?";
 // Signup Screen
 const String tSignUpTitle = "Get On Board !";
 const String tSignUpSubTitle =
-    "create your profile to start your journey finding a dream place ";
+    "create your profile to start your journey finding a dream place to live";
 const String tAlreadyHaveAnAccount = "Already have an Account?";
+const String tFullName = "Enter Your Full Name";
+const String tPhoneNo = "Enter Your Phone number";
+
+//Dashboard Screen
+const String tAppName = "REM-Np";
+const String tDashboardTitle = "Hey, Ashish K. Shrestha!";
+const String tDashboardHeading = "Explore here ";
+const String tDashboardSearch = "Search.....";
+const String tDashboardBannerTitle1 = "Recommended For You";
+const String tDashboardBannerTitle2 = "Homes";
+const String tDashboardBannerSubTitle = "10 estates";
+const String tDashboardButton = "View All";
+const String tDashboardTopEstates = "Top Estates";

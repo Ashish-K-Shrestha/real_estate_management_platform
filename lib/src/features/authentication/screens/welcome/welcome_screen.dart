@@ -4,6 +4,7 @@ import 'package:real_estate_management_platform/src/constants/image_strings.dart
 import 'package:real_estate_management_platform/src/constants/sizes.dart';
 import 'package:real_estate_management_platform/src/constants/text_strings.dart';
 import 'package:real_estate_management_platform/src/features/authentication/screens/login/login_screen.dart';
+import 'package:real_estate_management_platform/src/features/authentication/screens/signup/signup_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -62,7 +63,13 @@ class WelcomeScreen extends StatelessWidget {
               ),
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SignupScreen()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
                     shape: RoundedRectangleBorder(
