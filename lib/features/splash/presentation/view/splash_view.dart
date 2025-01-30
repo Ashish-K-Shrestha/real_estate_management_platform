@@ -48,7 +48,7 @@ class _SplashViewState extends State<SplashView> {
             bottom: 10,
             left: MediaQuery.of(context).size.width / 4,
             child: const Text(
-              'Developed by: Khatra Sir le',
+              'Developed by: Ashish K. Shrestha',
               style: TextStyle(fontSize: 15),
             ),
           ),
