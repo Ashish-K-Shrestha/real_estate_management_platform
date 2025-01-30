@@ -32,7 +32,7 @@ class _SplashViewState extends State<SplashView> {
                   child: Image.asset('assets/images/REM-Np.png'),
                 ),
                 const Text(
-                  'Student Course Management',
+                  'Real Estate Management Platform',
                   style: TextStyle(
                     fontSize: 25,
                   ),

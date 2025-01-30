@@ -1,4 +1,4 @@
-# softwarica_student_management_bloc
+# real_estate_management_platform
 
 A new Flutter project.
 
