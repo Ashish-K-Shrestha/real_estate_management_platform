@@ -29,7 +29,7 @@ class _SplashViewState extends State<SplashView> {
                 SizedBox(
                   height: 200,
                   width: 200,
-                  child: Image.asset('assets/images/splash.png'),
+                  child: Image.asset('assets/images/REM-Np.png'),
                 ),
                 const Text(
                   'Student Course Management',
