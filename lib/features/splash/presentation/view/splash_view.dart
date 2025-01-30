@@ -34,7 +34,7 @@ class _SplashViewState extends State<SplashView> {
                 const Text(
                   'Real Estate Management Platform',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 20,
                   ),
                 ),
                 const SizedBox(height: 10),
