@@ -120,7 +120,7 @@ class _RegisterViewState extends State<RegisterView> {
                         radius: 50,
                         backgroundImage: _img != null
                             ? FileImage(_img!)
-                            : const AssetImage('assets/images/profile.png')
+                            : const AssetImage('assets/images/REM-Np.png')
                                 as ImageProvider,
                         // backgroundImage:
                         //     const AssetImage('assets/images/profile.png')
