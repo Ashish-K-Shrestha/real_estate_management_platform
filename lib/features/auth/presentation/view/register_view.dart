@@ -23,11 +23,11 @@ class RegisterView extends StatefulWidget {
 class _RegisterViewState extends State<RegisterView> {
   final _gap = const SizedBox(height: 8);
   final _key = GlobalKey<FormState>();
-  final _fnameController = TextEditingController(text: 'ashish');
-  final _lnameController = TextEditingController(text: 'stha');
-  final _phoneController = TextEditingController(text: '9818652210');
-  final _usernameController = TextEditingController(text: 'ashish');
-  final _passwordController = TextEditingController(text: '9818652210');
+  final _fnameController = TextEditingController(text: '');
+  final _lnameController = TextEditingController(text: '');
+  final _phoneController = TextEditingController(text: '');
+  final _usernameController = TextEditingController(text: '');
+  final _passwordController = TextEditingController(text: '');
 
   BatchEntity? _dropDownValue;
   final List<CourseEntity> _lstCourseSelected = [];
