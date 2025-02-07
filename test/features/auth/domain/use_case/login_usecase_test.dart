@@ -1,0 +1,121 @@
+import 'package:dartz/dartz.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:softwarica_student_management_bloc/core/error/failure.dart';
+import 'package:softwarica_student_management_bloc/features/auth/domain/use_case/login_usecase.dart';
+
+import 'repository.mock.dart';
+import 'token.mock.dart';
+
+void main() {
+  setUpAll(() {
+    registerFallbackValue(
+        LoginParams(username: 'test@example.com', password: 'testpassword'));
+  });
+
+  late LoginUseCase loginUseCase;
+  late MockAuthRepository mockAuthRepository;
+  late MockTokenSharedPrefs mockTokenSharedPrefs;
+
+  setUp(() {
+    mockAuthRepository = MockAuthRepository();
+    mockTokenSharedPrefs = MockTokenSharedPrefs();
+    loginUseCase = LoginUseCase(mockAuthRepository, mockTokenSharedPrefs);
+  });
+
+  const email = 'test@example.com';
+  const password = 'password123';
+
+  test('should return ApiFailure when login fails', () async {
+    when(() => mockAuthRepository.loginStudent(email, password)).thenAnswer(
+      (_) async => Left(ApiFailure(message: 'Server Error', statusCode: 500)),
+    );
+
+    final result =
+        await loginUseCase(LoginParams(username: email, password: password));
+
+    expect(result, Left(ApiFailure(message: 'Server Error', statusCode: 500)));
+    verify(() => mockAuthRepository.loginStudent(email, password)).called(1);
+    verifyNoMoreInteractions(mockAuthRepository);
+    verifyNoMoreInteractions(mockTokenSharedPrefs);
+  });
+
+  test('should return DuplicateEmailFailure when email is already in use',
+      () async {
+    when(() => mockAuthRepository.loginStudent(email, password)).thenAnswer(
+      (_) async => Left(DuplicateEmailFailure()),
+    );
+
+    final result =
+        await loginUseCase(LoginParams(username: email, password: password));
+
+    expect(result, Left(DuplicateEmailFailure()));
+    verify(() => mockAuthRepository.loginStudent(email, password)).called(1);
+    verifyNoMoreInteractions(mockAuthRepository);
+    verifyNoMoreInteractions(mockTokenSharedPrefs);
+  });
+
+  test('should return WeakPasswordFailure when password is weak', () async {
+    when(() => mockAuthRepository.loginStudent(email, password)).thenAnswer(
+      (_) async => Left(WeakPasswordFailure()),
+    );
+
+    final result =
+        await loginUseCase(LoginParams(username: email, password: password));
+
+    expect(result, Left(WeakPasswordFailure()));
+    verify(() => mockAuthRepository.loginStudent(email, password)).called(1);
+    verifyNoMoreInteractions(mockAuthRepository);
+    verifyNoMoreInteractions(mockTokenSharedPrefs);
+  });
+
+  test('should not save token if login fails', () async {
+    when(() => mockAuthRepository.loginStudent(email, password)).thenAnswer(
+      (_) async => Left(ApiFailure(message: 'Server Error', statusCode: 500)),
+    );
+
+    final result =
+        await loginUseCase(LoginParams(username: email, password: password));
+
+    expect(result, Left(ApiFailure(message: 'Server Error', statusCode: 500)));
+    verify(() => mockAuthRepository.loginStudent(email, password)).called(1);
+    verifyNever(() => mockTokenSharedPrefs.saveToken(any()));
+    verifyNoMoreInteractions(mockAuthRepository);
+    verifyNoMoreInteractions(mockTokenSharedPrefs);
+  });
+
+  test('should return InvalidEmailFailure when email format is invalid',
+      () async {
+    when(() => mockAuthRepository.loginStudent(any(), any())).thenAnswer(
+      (_) async => Left(InvalidEmailFailure()),
+    );
+
+    const invalidEmail = 'invalidemail';
+    const password = 'password123';
+    final invalidParams =
+        LoginParams(username: invalidEmail, password: password);
+
+    final result = await loginUseCase(invalidParams);
+
+    expect(result, Left(InvalidEmailFailure()));
+    verify(() => mockAuthRepository.loginStudent(invalidEmail, password))
+        .called(1);
+    verifyNoMoreInteractions(mockAuthRepository);
+    verifyNoMoreInteractions(mockTokenSharedPrefs);
+  });
+
+  test('should return MissingFieldFailure when fields are missing', () async {
+    when(() => mockAuthRepository.loginStudent(any(), any())).thenAnswer(
+      (_) async => Left(MissingFieldFailure()),
+    );
+
+    const missingFieldParams = LoginParams(username: '', password: '');
+
+    final result = await loginUseCase(missingFieldParams);
+
+    expect(result, Left(MissingFieldFailure()));
+    verify(() => mockAuthRepository.loginStudent('', '')).called(1);
+    verifyNoMoreInteractions(mockAuthRepository);
+    verifyNoMoreInteractions(mockTokenSharedPrefs);
+  });
+}

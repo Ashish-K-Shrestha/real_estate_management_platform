@@ -22,8 +22,8 @@ class AuthHiveModelAdapter extends TypeAdapter<AuthHiveModel> {
       lName: fields[2] as String,
       image: fields[3] as String?,
       phone: fields[4] as String,
-      batch: fields[5] as BatchHiveModel,
-      courses: (fields[6] as List).cast<CourseHiveModel>(),
+      // batch: fields[5] as BatchHiveModel,
+      // courses: (fields[6] as List).cast<CourseHiveModel>(),
       username: fields[7] as String,
       password: fields[8] as String,
     );
@@ -43,10 +43,10 @@ class AuthHiveModelAdapter extends TypeAdapter<AuthHiveModel> {
       ..write(obj.image)
       ..writeByte(4)
       ..write(obj.phone)
-      ..writeByte(5)
-      ..write(obj.batch)
-      ..writeByte(6)
-      ..write(obj.courses)
+      // ..writeByte(5)
+      // ..write(obj.batch)
+      // ..writeByte(6)
+      // ..write(obj.courses)
       ..writeByte(7)
       ..write(obj.username)
       ..writeByte(8)

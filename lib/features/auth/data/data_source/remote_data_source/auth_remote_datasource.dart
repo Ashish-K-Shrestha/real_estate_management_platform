@@ -9,7 +9,7 @@ class AuthRemoteDataSource implements IAuthDataSource {
   final Dio _dio;
 
   AuthRemoteDataSource(this._dio);
-  
+
   @override
   Future<void> registerStudent(AuthEntity student) async {
     try {
@@ -22,16 +22,17 @@ class AuthRemoteDataSource implements IAuthDataSource {
           "image": student.image,
           "username": student.username,
           "password": student.password,
-          "batch": student.batch.batchId,
+          // "batch": student.batch.batchId,
           // "course": ["6489a5908dbc6d39719ec19c", "6489a5968dbc6d39719ec19e"]
-          "course": student.courses.map((e) => e.courseId).toList(),
+          // "course": student.courses.map((e) => e.courseId).toList(),
         },
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         return;
       } else {
-        throw Exception(response.statusMessage);
+        throw Exception(
+            'Failed to register user. Status code: ${response.statusCode}');
       }
     } on DioException catch (e) {
       throw Exception(e);

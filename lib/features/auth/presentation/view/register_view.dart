@@ -3,15 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:multi_select_flutter/dialog/multi_select_dialog_field.dart';
-import 'package:multi_select_flutter/util/multi_select_item.dart';
-import 'package:multi_select_flutter/util/multi_select_list_type.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:softwarica_student_management_bloc/features/auth/presentation/view_model/signup/register_bloc.dart';
 import 'package:softwarica_student_management_bloc/features/batch/domain/entity/batch_entity.dart';
-import 'package:softwarica_student_management_bloc/features/batch/presentation/view_model/batch_bloc.dart';
 import 'package:softwarica_student_management_bloc/features/course/domain/entity/course_entity.dart';
-import 'package:softwarica_student_management_bloc/features/course/presentation/view_model/course_bloc.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -23,11 +18,11 @@ class RegisterView extends StatefulWidget {
 class _RegisterViewState extends State<RegisterView> {
   final _gap = const SizedBox(height: 8);
   final _key = GlobalKey<FormState>();
-  final _fnameController = TextEditingController(text: '');
-  final _lnameController = TextEditingController(text: '');
-  final _phoneController = TextEditingController(text: '');
-  final _usernameController = TextEditingController(text: '');
-  final _passwordController = TextEditingController(text: '');
+  final _fnameController = TextEditingController(text: 'ashish');
+  final _lnameController = TextEditingController(text: 'stha');
+  final _phoneController = TextEditingController(text: '9818652210');
+  final _usernameController = TextEditingController(text: 'ashish');
+  final _passwordController = TextEditingController(text: '9818652210');
 
   BatchEntity? _dropDownValue;
   final List<CourseEntity> _lstCourseSelected = [];
@@ -168,71 +163,71 @@ class _RegisterViewState extends State<RegisterView> {
                     }),
                   ),
                   _gap,
-                  BlocBuilder<BatchBloc, BatchState>(builder: (context, state) {
-                    return DropdownButtonFormField<BatchEntity>(
-                      items: state.batches
-                          .map((e) => DropdownMenuItem<BatchEntity>(
-                                value: e,
-                                child: Text(e.batchName),
-                              ))
-                          .toList(),
-                      onChanged: (value) {
-                        _dropDownValue = value;
-                      },
-                      value: _dropDownValue,
-                      decoration: const InputDecoration(
-                        labelText: 'Select Batch',
-                      ),
-                      validator: ((value) {
-                        if (value == null) {
-                          return 'Please select batch';
-                        }
-                        return null;
-                      }),
-                    );
-                  }),
-                  _gap,
-                  BlocBuilder<CourseBloc, CourseState>(
-                      builder: (context, courseState) {
-                    if (courseState.isLoading) {
-                      return const CircularProgressIndicator();
-                    } else {
-                      return MultiSelectDialogField(
-                        title: const Text('Select course'),
-                        items: courseState.courses
-                            .map(
-                              (course) => MultiSelectItem(
-                                course,
-                                course.courseName,
-                              ),
-                            )
-                            .toList(),
-                        listType: MultiSelectListType.CHIP,
-                        buttonText: const Text(
-                          'Select course',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        buttonIcon: const Icon(Icons.search),
-                        onConfirm: (values) {
-                          _lstCourseSelected.clear();
-                          _lstCourseSelected.addAll(values);
-                        },
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.black87,
-                          ),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        validator: ((value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please select courses';
-                          }
-                          return null;
-                        }),
-                      );
-                    }
-                  }),
-                  _gap,
+                  // BlocBuilder<BatchBloc, BatchState>(builder: (context, state) {
+                  //   return DropdownButtonFormField<BatchEntity>(
+                  //     items: state.batches
+                  //         .map((e) => DropdownMenuItem<BatchEntity>(
+                  //               value: e,
+                  //               child: Text(e.batchName),
+                  //             ))
+                  //         .toList(),
+                  //     onChanged: (value) {
+                  //       _dropDownValue = value;
+                  //     },
+                  //     value: _dropDownValue,
+                  //     decoration: const InputDecoration(
+                  //       labelText: 'Select Batch',
+                  //     ),
+                  //     validator: ((value) {
+                  //       if (value == null) {
+                  //         return 'Please select batch';
+                  //       }
+                  //       return null;
+                  //     }),
+                  //   );
+                  // }),
+                  // _gap,
+                  // BlocBuilder<CourseBloc, CourseState>(
+                  //     builder: (context, courseState) {
+                  //   if (courseState.isLoading) {
+                  //     return const CircularProgressIndicator();
+                  //   } else {
+                  //     return MultiSelectDialogField(
+                  //       title: const Text('Select course'),
+                  //       items: courseState.courses
+                  //           .map(
+                  //             (course) => MultiSelectItem(
+                  //               course,
+                  //               course.courseName,
+                  //             ),
+                  //           )
+                  //           .toList(),
+                  //       listType: MultiSelectListType.CHIP,
+                  //       buttonText: const Text(
+                  //         'Select course',
+                  //         style: TextStyle(color: Colors.black),
+                  //       ),
+                  //       buttonIcon: const Icon(Icons.search),
+                  //       onConfirm: (values) {
+                  //         _lstCourseSelected.clear();
+                  //         _lstCourseSelected.addAll(values);
+                  //       },
+                  //       decoration: BoxDecoration(
+                  //         border: Border.all(
+                  //           color: Colors.black87,
+                  //         ),
+                  //         borderRadius: BorderRadius.circular(5),
+                  //       ),
+                  //       validator: ((value) {
+                  //         if (value == null || value.isEmpty) {
+                  //           return 'Please select courses';
+                  //         }
+                  //         return null;
+                  //       }),
+                  //     );
+                  //   }
+                  // }),
+                  // _gap,
                   TextFormField(
                     controller: _usernameController,
                     decoration: const InputDecoration(
