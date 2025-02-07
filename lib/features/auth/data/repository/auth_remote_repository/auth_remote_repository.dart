@@ -12,7 +12,7 @@ class AuthRemoteRepository implements IAuthRepository {
   AuthRemoteRepository(this._authRemoteDataSource);
 
   @override
-  Future<Either<Failure, void>> registerStudent(AuthEntity student) async {
+  Future<Either<Failure, void>> registerUser(AuthEntity student) async {
     try {
       await _authRemoteDataSource.registerStudent(student);
       return Right(null);
@@ -28,7 +28,7 @@ class AuthRemoteRepository implements IAuthRepository {
   }
 
   @override
-  Future<Either<Failure, String>> loginStudent(
+  Future<Either<Failure, String>> loginUser(
       String username, String password) async {
     try {
       final token =

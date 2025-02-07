@@ -45,21 +45,19 @@ void main() {
       phone: tParams.phone);
 
   test('should call registerUser on repository with correct data', () async {
-    when(() => mockAuthRepository.registerStudent(any<AuthEntity>()))
-        .thenAnswer(
+    when(() => mockAuthRepository.registerUser(any<AuthEntity>())).thenAnswer(
       (_) async => const Right<Failure, void>(null),
     );
 
     final result = await useCase(tParams);
 
     expect(result, const Right(null));
-    verify(() => mockAuthRepository.registerStudent(tAuthEntity));
+    verify(() => mockAuthRepository.registerUser(tAuthEntity));
     verifyNoMoreInteractions(mockAuthRepository);
   });
 
   test('should return Failure when repository call fails', () async {
-    when(() => mockAuthRepository.registerStudent(any<AuthEntity>()))
-        .thenAnswer(
+    when(() => mockAuthRepository.registerUser(any<AuthEntity>())).thenAnswer(
       (_) async => Left<Failure, void>(
         ApiFailure(statusCode: 500, message: 'Server Error'),
       ),
@@ -68,12 +66,12 @@ void main() {
     final result = await useCase(tParams);
 
     expect(result, Left(ApiFailure(statusCode: 500, message: 'Server Error')));
-    verify(() => mockAuthRepository.registerStudent(tAuthEntity));
+    verify(() => mockAuthRepository.registerUser(tAuthEntity));
     verifyNoMoreInteractions(mockAuthRepository);
   });
 
   test('should return Failure when email is already in use', () async {
-    when(() => mockAuthRepository.registerStudent(any<AuthEntity>()))
+    when(() => mockAuthRepository.registerUser(any<AuthEntity>()))
         .thenAnswer((_) async => Left(DuplicateEmailFailure()));
 
     const duplicateEmailParams = RegisterUserParams(
@@ -89,7 +87,7 @@ void main() {
 
     expect(result, Left(DuplicateEmailFailure()));
 
-    verify(() => mockAuthRepository.registerStudent(any<AuthEntity>()));
+    verify(() => mockAuthRepository.registerUser(any<AuthEntity>()));
     verifyNoMoreInteractions(mockAuthRepository);
   });
 }
