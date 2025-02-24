@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:real_estate_management_platform/features/splash/presentation/view_model/splash_cubit.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -13,6 +15,8 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
       // Navigate to the next screen (replace with your navigation logic)
+      // ignore: use_build_context_synchronously
+      context.read<SplashCubit>().init(context);
     });
   }
 
@@ -22,36 +26,30 @@ class _SplashViewState extends State<SplashView> {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFF607D8B), Color(0xFFB0BEC5)],
+            colors: [
+              Color(0xFF00796B),
+              Color(0xFF0288D1),
+              Color(0xFFFFFFFF)
+            ], // Teal, Blue, White
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
         ),
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 300, // Adjust as needed
-                  width: 300,
-                  child: Image.asset('assets/images/REM-Np.png'),
-                ),
-              ],
-            ),
-            Positioned(
-              bottom: 20,
-              child: Container(
-                height: 5,
-                width: 100,
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.circular(10),
-                ),
+        child: Center(
+          child: SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child: ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                Colors.white.withOpacity(0.8), // Adjust opacity to blend
+                BlendMode.modulate, // Blend the image with the background
+              ),
+              child: Image.asset(
+                'assets/images/REM-Np.png',
+                fit: BoxFit.contain, // Ensure the image is fully visible
               ),
             ),
-          ],
+          ),
         ),
       ),
     );
