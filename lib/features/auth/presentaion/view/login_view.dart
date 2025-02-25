@@ -32,7 +32,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Keep background clean
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -40,30 +40,32 @@ class _LoginViewState extends State<LoginView> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Logo with gradient background
+                // Profile picture section - now with circle fitting
                 Container(
-                  height: 180,
-                  width: 180,
+                  height: 160,
+                  width: 160,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(
                       colors: [
-                        Color(0xFF00796B), // Teal
-                        Color(0xFF0288D1) // Blue
+                        Color(0xFF00796B),
+                        Color(0xFF0288D1),
                       ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Image.asset('assets/images/logo1.png'),
+                  child: ClipOval(
+                    child: Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: Image.asset(
+                        'assets/images/user.jpg',
+                        fit: BoxFit.cover, // Ensures image fills the circle
+                      ),
+                    ),
                   ),
                 ),
-
                 const SizedBox(height: 20),
-
-                // Login title
                 const Text(
                   'Log In',
                   style: TextStyle(
@@ -79,7 +81,6 @@ class _LoginViewState extends State<LoginView> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      // Email input
                       _buildInputField(
                         controller: _emailController,
                         label: 'Email',
@@ -88,8 +89,6 @@ class _LoginViewState extends State<LoginView> {
                         validator: _validateEmail,
                       ),
                       const SizedBox(height: 15),
-
-                      // Password input
                       _buildInputField(
                         controller: _passwordController,
                         label: 'Password',
@@ -98,8 +97,6 @@ class _LoginViewState extends State<LoginView> {
                         validator: _validatePassword,
                       ),
                       const SizedBox(height: 10),
-
-                      // Forget Password
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
@@ -111,8 +108,6 @@ class _LoginViewState extends State<LoginView> {
                         ),
                       ),
                       const SizedBox(height: 20),
-
-                      // Sign in button
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
@@ -131,15 +126,11 @@ class _LoginViewState extends State<LoginView> {
                         ),
                       ),
                       const SizedBox(height: 20),
-
-                      // Or sign in with
                       const Text(
                         'Or sign in with',
                         style: TextStyle(color: Color(0xFF0288D1)),
                       ),
                       const SizedBox(height: 10),
-
-                      // Social media buttons
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -150,20 +141,22 @@ class _LoginViewState extends State<LoginView> {
                         ],
                       ),
                       const SizedBox(height: 20),
-
-                      // Sign up
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text('Don’t have an account? '),
+                          const Text(
+                            'Don’t have an account?',
+                            style: TextStyle(color: Color(0xFF00796B)),
+                          ),
                           GestureDetector(
                             onTap: () {
                               // Navigate to Sign Up
+                              Navigator.pushNamed(context, '/signup');
                             },
                             child: const Text(
                               'Sign Up',
                               style: TextStyle(
-                                color: Color(0xFF00796B),
+                                color: Color(0xFF0288D1),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -181,7 +174,6 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-  // Input field builder
   Widget _buildInputField({
     required TextEditingController controller,
     required String label,
@@ -216,7 +208,6 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-  // Social button builder
   Widget _buildSocialButton(String name, Color color, IconData icon) {
     return GestureDetector(
       onTap: () {},
@@ -228,7 +219,6 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-  // Validation Functions
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter your email';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate_management_platform/features/splash/presentation/view/splash_view.dart';
+import 'package:real_estate_management_platform/features/auth/presentaion/view/register_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(brightness: Brightness.light),
       darkTheme: ThemeData(brightness: Brightness.dark),
       themeMode: ThemeMode.system,
-      home: const SplashView(),
+      home: const RegisterView(),
     );
   }
 }
+ 
