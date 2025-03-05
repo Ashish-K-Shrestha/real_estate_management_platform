@@ -6,6 +6,7 @@ import 'package:real_estate_management_platform/features/auth/presentaion/view_m
 import 'package:real_estate_management_platform/features/onboarding/presentation/view_model/onboarding_cubit.dart';
 import 'package:real_estate_management_platform/features/splash/presentation/view/splash_view.dart';
 import 'package:real_estate_management_platform/features/splash/presentation/view_model/splash_cubit.dart';
+import 'package:real_estate_management_platform/home/presentation/view/home_view.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -37,7 +38,7 @@ class App extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SplashView(),
+        home: SplashView(),
       ),
     );
   }

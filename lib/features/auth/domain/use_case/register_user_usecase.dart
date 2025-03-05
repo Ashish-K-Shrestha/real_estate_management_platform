@@ -5,18 +5,29 @@ import 'package:real_estate_management_platform/features/auth/domain/entity/auth
 import 'package:real_estate_management_platform/features/auth/domain/repository/auth_repository.dart';
 
 class RegisterUserParams extends Equatable {
-  final String fullName;
+  final String username;
   final String email;
   final String password;
+  final String? image;
 
   const RegisterUserParams({
-    required this.fullName,
+    required this.username,
     required this.email,
     required this.password,
+    this.image,
   });
 
+  //intial constructor
+  const RegisterUserParams.initial({
+    required this.username,
+    required this.email,
+    required this.password,
+    this.image,
+  });
+
+
   @override
-  List<Object?> get props => [fullName, email, password];
+  List<Object?> get props => [username, email, password, image];
 }
 
 class RegisterUserUseCase {
@@ -26,10 +37,11 @@ class RegisterUserUseCase {
 
   Future<Either<Failure, void>> call(RegisterUserParams params) {
     final authEntity = AuthEntity(
-      fullName: params.fullName,
+      username: params.username,
       email: params.email,
       password: params.password,
+      image: params.image,
     );
-    return repository.registerStudent(authEntity);
+    return repository.registeruser(authEntity);
   }
 }
