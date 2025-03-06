@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:real_estate_management_platform/core/error/failure.dart';
-import 'package:real_estate_management_platform/features/auth/data/data_source/local_data_source/auth_loacal_datasource.dart';
+import 'package:real_estate_management_platform/features/auth/data/data_source/local_data_source/auth_local_datasource.dart';
 import 'package:real_estate_management_platform/features/auth/domain/entity/auth_entity.dart';
 import 'package:real_estate_management_platform/features/auth/domain/repository/auth_repository.dart';
 

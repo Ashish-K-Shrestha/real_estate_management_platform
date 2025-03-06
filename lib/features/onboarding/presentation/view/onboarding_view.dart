@@ -15,9 +15,9 @@ class OnboardingView extends StatelessWidget {
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color(0xFF0074B7),
-                Color(0xFF00A99D)
-              ], // Blue & Teal gradient
+                Color(0xFF0288D1),
+                Color(0xFF00796B)
+              ], // Updated gradient colors
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
@@ -39,35 +39,26 @@ class OnboardingView extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.4,
-                                child: Image.asset(
-                                  page.imagePath,
-                                  fit: BoxFit.contain,
-                                ),
+                              Image.asset(
+                                page.imagePath,
+                                height: 350,
                               ),
-                              const SizedBox(height: 30),
+                              const SizedBox(height: 20),
                               Text(
                                 page.title,
                                 style: const TextStyle(
-                                  fontSize: 26,
+                                  fontSize: 24,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                                  color: Colors.white, // Updated text color
                                 ),
-                                textAlign: TextAlign.center,
                               ),
-                              const SizedBox(height: 15),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Text(
-                                  page.description,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.white.withOpacity(0.9),
-                                  ),
+                              const SizedBox(height: 10),
+                              Text(
+                                page.description,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white, // Updated text color
                                 ),
                               ),
                             ],
@@ -78,23 +69,24 @@ class OnboardingView extends StatelessWidget {
                   },
                 ),
               ),
-              // Dots Indicator
+              // Dot Indicator
               BlocBuilder<OnboardingCubit, int>(
                 builder: (context, currentPage) {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
                       pages.length,
-                      (index) => AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
+                      (index) => Container(
                         margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                        width: currentPage == index ? 12.0 : 8.0,
-                        height: 8.0,
+                        width: 10.0,
+                        height: 10.0,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: currentPage == index
-                              ? Colors.white
-                              : Colors.white.withOpacity(0.5),
+                              ? const Color(
+                                  0xFFFFFFFF) // Updated active dot color
+                              : Colors.white.withOpacity(
+                                  0.5), // Updated inactive dot color
                         ),
                       ),
                     ),
@@ -110,13 +102,20 @@ class OnboardingView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         if (currentPage != 0)
-                          TextButton(
+                          ElevatedButton(
                             onPressed: () =>
                                 cubit.navigateToAuthScreen(context),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(
+                                  0xFF0288D1), // Updated button color
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                            ),
                             child: const Text(
                               'Skip',
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.white),
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ElevatedButton(
@@ -128,19 +127,16 @@ class OnboardingView extends StatelessWidget {
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
+                            backgroundColor:
+                                const Color(0xFF0288D1), // Updated button color
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 12, horizontal: 25),
+                            padding: const EdgeInsets.symmetric(vertical: 15),
                           ),
                           child: Text(
-                            currentPage == pages.length - 1
-                                ? 'Get Started'
-                                : 'Next',
-                            style: const TextStyle(
-                                fontSize: 18, color: Color(0xFF0074B7)),
+                            currentPage == pages.length - 1 ? 'Start' : 'Next',
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                       ],

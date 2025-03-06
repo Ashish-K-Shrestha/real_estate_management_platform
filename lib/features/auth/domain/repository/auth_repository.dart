@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:real_estate_management_platform/core/error/failure.dart';
 import 'package:real_estate_management_platform/features/auth/domain/entity/auth_entity.dart';
@@ -5,9 +7,11 @@ import 'package:real_estate_management_platform/features/auth/domain/entity/auth
 abstract interface class IAuthRepository {
   Future<Either<Failure, void>> registerStudent(AuthEntity student);
 
-  Future<Either<Failure, String>> loginStudent(String email, String password);
+  Future<Either<Failure, String>> loginStudent(String username, String password);
 
-  // Future<Either<Failure, String>> uploadProfilePicture(File file);
+  Future<Either<Failure, String>> uploadProfilePicture(File file);
 
   Future<Either<Failure, AuthEntity>> getCurrentUser();
 }
+
+

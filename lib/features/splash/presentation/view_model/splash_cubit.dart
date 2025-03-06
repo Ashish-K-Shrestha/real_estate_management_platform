@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:real_estate_management_platform/features/auth/presentaion/view_model/login/login_bloc.dart';
+import 'package:real_estate_management_platform/features/auth/presentation/view_model/login/login_bloc.dart';
 import 'package:real_estate_management_platform/features/onboarding/presentation/view/onboarding_view.dart';
 
 class SplashCubit extends Cubit<void> {

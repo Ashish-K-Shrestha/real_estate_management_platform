@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:real_estate_management_platform/app.dart';
+import 'package:real_estate_management_platform/app/app.dart';
 import 'package:real_estate_management_platform/app/di/di.dart';
+import 'package:real_estate_management_platform/core/network/hive_service.dart';
 
-Future<void> main() async {
+
+
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await HiveService.init();
+
+  // await HiveService().clearStudentBox();
+
   await initDependencies();
-  // Ensure dependencies are initialized
+
   runApp(
-    ProviderScope(  // ✅ Wrap the app in ProviderScope
-      child: App(),
-    ),
+    App(),
   );
 }

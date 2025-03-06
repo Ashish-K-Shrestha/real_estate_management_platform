@@ -1,6 +1,7 @@
-import 'package:bloc/bloc.dart';
+// onboarding_cubit.dart
 import 'package:flutter/material.dart';
-import 'package:real_estate_management_platform/features/auth/presentaion/view/login_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:real_estate_management_platform/features/auth/presentation/view/login_view.dart';
 import 'package:real_estate_management_platform/features/onboarding/presentation/view/on_board_model.dart';
 
 class OnboardingCubit extends Cubit<int> {
@@ -26,7 +27,7 @@ class OnboardingCubit extends Cubit<int> {
   void navigateToAuthScreen(BuildContext context) {
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (context) => const LoginView(),
+        builder: (context) => LoginView(),
       ),
     );
   }
