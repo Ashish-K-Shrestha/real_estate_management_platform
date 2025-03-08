@@ -122,6 +122,21 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                   style: const TextStyle(
                                       fontSize: 14, color: Colors.teal),
                                 ),
+                                Text(
+                                  product['phone']?.toString() ?? "No Phone",
+                                  style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.center,
+                                ),
+                                Text(
+                                  product['description']?.toString() ??
+                                      "No description",
+                                  style: const TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal),
+                                  textAlign: TextAlign.center,
+                                ),
                               ],
                             ),
                           )
