@@ -75,7 +75,7 @@ class HomeView extends StatelessWidget {
             currentIndex: state.selectedIndex,
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.grey.shade400,
-            backgroundColor: const Color(0xFF00796B),
+            backgroundColor: const Color(0xFF0288D1),
             type: BottomNavigationBarType.fixed,
             onTap: (index) {
               context.read<HomeCubit>().onTabTapped(index);
