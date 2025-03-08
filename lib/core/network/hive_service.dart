@@ -2,8 +2,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:real_estate_management_platform/app/constants/hive_table_constant.dart';
 import 'package:real_estate_management_platform/features/auth/data/model/auth_hive_model.dart';
-import 'package:real_estate_management_platform/features/batch/data/model/batch_hive_model.dart';
-import 'package:real_estate_management_platform/features/course/data/model/course_hive_model.dart';
+import 'package:real_estate_management_platform/features/listing/data/model/batch_hive_model.dart';
+import 'package:real_estate_management_platform/features/search/data/model/course_hive_model.dart';
 
 class HiveService {
   static Future<void> init() async {

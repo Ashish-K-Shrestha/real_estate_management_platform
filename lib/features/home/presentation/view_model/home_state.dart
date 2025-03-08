@@ -2,10 +2,10 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:real_estate_management_platform/app/di/di.dart';
-import 'package:real_estate_management_platform/features/batch/presentation/view/batch_view.dart';
-import 'package:real_estate_management_platform/features/batch/presentation/view_model/batch_bloc.dart';
-import 'package:real_estate_management_platform/features/course/presentation/view/course_view.dart';
-import 'package:real_estate_management_platform/features/course/presentation/view_model/course_bloc.dart';
+import 'package:real_estate_management_platform/features/listing/presentation/view/batch_view.dart';
+import 'package:real_estate_management_platform/features/listing/presentation/view_model/batch_bloc.dart';
+import 'package:real_estate_management_platform/features/search/presentation/view/course_view.dart';
+import 'package:real_estate_management_platform/features/search/presentation/view_model/course_bloc.dart';
 import 'package:real_estate_management_platform/features/home/presentation/view/dashboard_view.dart';
 import 'package:real_estate_management_platform/features/home/presentation/view/profile_view.dart';
 

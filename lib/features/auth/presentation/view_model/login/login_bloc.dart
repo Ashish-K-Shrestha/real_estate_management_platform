@@ -5,8 +5,8 @@ import 'package:real_estate_management_platform/app/di/di.dart';
 import 'package:real_estate_management_platform/core/common/snackbar/my_snackbar.dart';
 import 'package:real_estate_management_platform/features/auth/domain/use_case/login_usecase.dart';
 import 'package:real_estate_management_platform/features/auth/presentation/view_model/signup/register_bloc.dart';
-import 'package:real_estate_management_platform/features/batch/presentation/view_model/batch_bloc.dart';
-import 'package:real_estate_management_platform/features/course/presentation/view_model/course_bloc.dart';
+import 'package:real_estate_management_platform/features/listing/presentation/view_model/batch_bloc.dart';
+import 'package:real_estate_management_platform/features/search/presentation/view_model/course_bloc.dart';
 import 'package:real_estate_management_platform/features/home/presentation/view/home_view.dart';
 import 'package:real_estate_management_platform/features/home/presentation/view_model/home_cubit.dart';
 

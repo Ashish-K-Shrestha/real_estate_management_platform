@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:real_estate_management_platform/core/common/snackbar/my_snackbar.dart';
 import 'package:real_estate_management_platform/features/auth/domain/use_case/register_user_usecase.dart';
 import 'package:real_estate_management_platform/features/auth/domain/use_case/upload_image_usecase.dart';
-import 'package:real_estate_management_platform/features/batch/presentation/view_model/batch_bloc.dart';
-import 'package:real_estate_management_platform/features/course/presentation/view_model/course_bloc.dart';
+import 'package:real_estate_management_platform/features/listing/presentation/view_model/batch_bloc.dart';
+import 'package:real_estate_management_platform/features/search/presentation/view_model/course_bloc.dart';
 
 part 'register_event.dart';
 part 'register_state.dart';
